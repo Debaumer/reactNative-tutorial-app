@@ -22,7 +22,7 @@ export default class App extends React.Component {
                     longitudeDelta: 0.0421
                 }
             });
-            fetch('https://shareplaces-tutorial-rn.firebaseio.com/places.json', {
+            fetch("BACKEND GOES HERE NYAH NYAH YOU CAN'T STEAL MY DEETS", {
                 method: 'POST',
                 body: JSON.stringify({
                     latitude: position.coords.latitude,
