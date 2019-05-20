@@ -1,9 +1,8 @@
 import React from "react";
 import { StyleSheet, Text, View, Button } from "react-native";
-
+import url from './firebaseURL.js'
 import FetchLocation from './src/components/FetchLocation';
 import UsersMap from './src/components/UsersMap';
-
 export default class App extends React.Component {
     state = {
         userLocation: null,
@@ -11,6 +10,7 @@ export default class App extends React.Component {
     };
 
     getUserLocationHandlder = () => {
+        console.log(url);
         console.log('****Pressed the button!****')
         navigator.geolocation.getCurrentPosition(position =>  {
             console.log(position)
@@ -22,7 +22,7 @@ export default class App extends React.Component {
                     longitudeDelta: 0.0421
                 }
             });
-            fetch("BACKEND GOES HERE NYAH NYAH YOU CAN'T STEAL MY DEETS", {
+            fetch(url, {
                 method: 'POST',
                 body: JSON.stringify({
                     latitude: position.coords.latitude,
@@ -35,7 +35,7 @@ export default class App extends React.Component {
     }
 
     getUserPlacesHandler = () => {
-        fetch('https://shareplaces-tutorial-rn.firebaseio.com/places.json')
+        fetch(url)
         .then(res => res.json())
         .then(parsedRes => {
             const placesArray = [];
