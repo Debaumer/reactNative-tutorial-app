@@ -8,6 +8,11 @@ const usersMap = props => {
     if(props.userLocation) {
         marker = <MapView.Marker coordinate={props.userLocation}/>
     }
+    const usersMarkers = props.usersPlaces.map(userPlace => (
+        <MapView.Marker
+        coordinate={userPlace}
+        key={userPlace.id} />
+    ));
     return (
         <View style={styles.mapContainer}>
             <MapView
@@ -22,6 +27,7 @@ const usersMap = props => {
              }
              style={styles.map}>
                 {marker}
+                {usersMarkers}
              </MapView>
         </View>
     );
